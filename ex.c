@@ -1,8 +1,5 @@
 #include <stdio.h>
-#include <iostream>
-#include <fstream>
-#include <string>
-int main( int argc, const char** argv )
+int main( int argc, const char** argv)
 {
     char ch;
     /*Char array to store string */
@@ -18,7 +15,7 @@ int main( int argc, const char** argv )
     if (fpbr == NULL)
     {
         puts("Input Binary file is having issues while opening going to stdin mode");
-        scan
+      
     }
 
      while(1)
