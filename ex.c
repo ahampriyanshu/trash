@@ -3,12 +3,11 @@
 #include <ctype.h>
 
 
-int main( int argc, const char** argv)
+int main ( int argc, char *argv[] )
 {
 	int stdin_mode,stdout_mode,com_file,reversify;
 
     char ch;
-    char *inputfile,*outputfile,*comparefile;
     char shift;
 
     char buffer[1500]; 
@@ -18,7 +17,7 @@ int main( int argc, const char** argv)
     /* Pointers for both binary files*/
     FILE *fpbr, *fpbw;
 
-     if (argc == 1)  // create pin
+  if (argc == 1)  // create pin
     {
     	stdin_mode=1;
     	stdout_mode=1;
@@ -26,19 +25,8 @@ int main( int argc, const char** argv)
     	reversify=0;
       }
 
-  if (stdin_mode=0)
-  {
-  	for (int i = 0; i < argc; i++)
-  	{
-  		//if ( argv[i] == "-F")
-  			printf("%s\n",argv[i] );
-  			//inputfile = argv[i+1];
-  }
-
-    printf("hello are you there");
-    
     /* Open for bin1.exe file in rb mode */
-    fpbr = fopen(inputfile, "rb");
+    fpbr = fopen("myfile.txt", "rb");
 
     /* test logic for successful open*/
     if (fpbr == NULL)
@@ -46,25 +34,30 @@ int main( int argc, const char** argv)
         puts("Input Binary file is having issues while opening terminating the program !");
       
     }
+    
+   // char //check = "-F";
 
-    int count = fread(&buffer, sizeof(char),1500, fpbr);
-	
+    int count = fread( &buffer, sizeof(char),1500,fpbr) ;
 
-	// printf("Data read from file: %s \n", buffer);
- 	// printf("Elements read: %d", count);
-   // shift = decode ();
-  //  printf("Cyper shift is %d",shift);
+    for (int i=1; i< argc; i++) {
+      	
+{
+    printf("\n%s", argv[i+0]);
+        }
+        { /* printf("Gaand lagi hui hai"); */
+        }
+ }
 
     /* Opening file bin2.exe in “wb” mode for writing*/
-    fpbw= fopen("decodedfile.txt", "wb");
+    fpbw= fopen(argv[1], "wb");
 
     /* Ensure bin2.exe opened successfully*/
     if (fpbw == NULL)
     {
-       puts("Output binary file is having issues while opening going to stdout mode");
+       puts("Output binary file is having issues while opening terminating the program !");
     }
     else{
-             // decode(str, shift);
+             /* decode(str, shift); */
              fputs(buffer, fpbw);
          }
      /* Closing both the binary files */
@@ -72,5 +65,4 @@ int main( int argc, const char** argv)
      fclose(fpbw);
 
      return 0;
- }
 }
