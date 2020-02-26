@@ -1,6 +1,7 @@
 #include <stdio.h> 
 #include <string.h> 
 #include <ctype.h>
+#include <stdlib.h>
 
 
 int main ( int argc, char *argv[] )
@@ -25,41 +26,56 @@ int main ( int argc, char *argv[] )
     	reversify=0;
       }
 
-    /* Open for bin1.exe file in rb mode */
-    fpbr = fopen("myfile.txt", "rb");
+    // Reading file in binary mode
+  
+     for (int i=1; i< argc; i++) 
+    {
+      if (0 == strcmp(argv[i], "-F"))
+       {
 
-    /* test logic for successful open*/
+       fpbr = fopen(argv[i+1], "rb");
     if (fpbr == NULL)
     {
         puts("Input Binary file is having issues while opening terminating the program !");
+        exit(1);
       
     }
-    
-   // char //check = "-F";
-
     int count = fread( &buffer, sizeof(char),1500,fpbr) ;
+      break;
 
-    for (int i=1; i< argc; i++) {
-      	
-{
-    printf("\n%s", argv[i+0]);
-        }
-        { /* printf("Gaand lagi hui hai"); */
-        }
- }
+    } else {
+      
+     gets(buffer);
+}	
+    
+    /*now producing the output  file */
 
-    /* Opening file bin2.exe in “wb” mode for writing*/
-    fpbw= fopen(argv[1], "wb");
+    for (int i=1; i< argc; i++) 
+    {
+      if (0 == strcmp(argv[i], "-O"))
+       {
 
-    /* Ensure bin2.exe opened successfully*/
-    if (fpbw == NULL)
+      fpbw= fopen(argv[i+1], "wb");
+      fputs(buffer, fpbw);
+          if (fpbw == NULL)
     {
        puts("Output binary file is having issues while opening terminating the program !");
+       exit(1);
     }
-    else{
-             /* decode(str, shift); */
-             fputs(buffer, fpbw);
-         }
+
+      break;
+
+    } else {
+      
+     puts(buffer);
+}	
+    }
+    /* Opening file bin2.exe in “wb” mode for writing*/
+   
+
+    /* Ensure bin2.exe opened successfully*/
+
+      
      /* Closing both the binary files */
      fclose(fpbr);
      fclose(fpbw);
