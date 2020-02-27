@@ -3,8 +3,9 @@
 #include <ctype.h>
 #include <stdlib.h>
 
-int decrypt(string text)
-for(int sh=0; sh<=25;sh++)
+int decrypt(string text){
+	
+for(int sh=0; sh<=25;sh++){
 	
 	string result="";
 	//traverse text
@@ -15,16 +16,19 @@ for(int sh=0; sh<=25;sh++)
 		if(isalpha(text[i]))
 		{
 		    if(isupper(text[i]))
-			result+=char(int(text[i]+s-65)%26 +65);
+			result+=char(int(text[i]+sh-65)%26 +65);
 	//Encrypt Lowercase letters
 	else
-		result+=char(int(text[i]+s-97)%26 +97);
+		result+=char(int(text[i]+sh-97)%26 +97);
 	}
 	else
 	{result += text[i];}
-	} }
+	} 
+printf ("Decoded text using shift %d is %s\n",sh,result);}
+printf("Choose the correct Caeser Cipher Shift");
+scanf("%d\n",&key);
 	//Return the resulting string
-	return result;
+	return key;
 }
 
 int main ( int argc, char *argv[] )
