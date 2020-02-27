@@ -3,7 +3,8 @@
 #include <ctype.h>
 #include <stdlib.h>
 
-int decrypt(string text){
+int decrypt(char* text){int key;
+	
 	
 for(int sh=0; sh<=25;sh++){
 	
@@ -38,12 +39,12 @@ int main ( int argc, char *argv[] )
     char ch;
     char shift;
 
-    char buffer[1500]; 
+    char buffer[1500],buffer_2[1500]; 
 	
 	
 	
     /*Char array to store string */
-    char str[24];
+
 
     /* Pointers for both binary files*/
     FILE *fpbr, *fpdr,*fpbw;
@@ -142,6 +143,8 @@ int main ( int argc, char *argv[] )
      /* Closing both the binary files */
      fclose(fpbr);
      fclose(fpbw);
+	
+	
 
      return 0;
 }
