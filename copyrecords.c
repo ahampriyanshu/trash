@@ -5,9 +5,12 @@
 int main ( int argc, char *argv[] )
 {
 	int read_mode,write_mode,shift_type,reversify;
-
+    
     char key,ch,shift;
     int shiftkey,buffer_size,buffer_com_size;
+      long lSize;
+     char * buffer;
+     size_t result;
  
     /* Pointers for binary files*/
     FILE *fpbr, *fpdr,*fpbw;
@@ -25,28 +28,41 @@ int main ( int argc, char *argv[] )
     {
       if (0 == strcmp(argv[i], "-F"))
 
-      { fpbr= fopen(argv[i+1], "rb");
+      { fpbr= fopen(argv[i+1], "rb+");
     
           if (fpbr == NULL)
     {
        puts("Input binary file is having issues while opening terminating the program !");
        exit(1);
     }
-     read_mode = 1;
-    }
+
+  fseek (fpbr , 0 , SEEK_END);
+  lSize = ftell (fpbr);
+  buffer_size=lSize;
+  rewind (fpbr);
+
+  // allocate memory to contain the whole file:
+  buffer = (char*) malloc (sizeof(char)*lSize);
+  if (buffer == NULL) {fputs ("Memory error",stderr); exit (2);}
+
+  // copy the file into the buffer:
+  //result = fread (buffer,1,lSize,fpbr);
+  //if (result != lSize) {fputs ("Reading error",stderr); exit (3);}  
+
+  result = fread (buffer,sizeof(char),buffer_size,fpbr); //read 200 bytes to test only
+
+  puts(buffer);
+    
     }
     
-  if( read_mode == 1 ){
-   while ((ch = fgetc(fpbr)) != EOF) {
- buffer_size++;
-  
-} printf("%d = %c\n",buffer_size,ch);
-char buffer[buffer_size],buffer_3[buffer_size];
+
+char buffer_3[buffer_size];
+
     if (read_mode == 1)
     {
-      int count = fread(&buffer, sizeof(char),buffer_size,fpbr) ; 
+    
     }else{
-     scanf("%s",buffer);
+     
     }	
     
 /**********************************************************************************************************/
@@ -135,7 +151,6 @@ scanf("%d\n",&key);
     }else{
      puts(buffer_3);
     }	 
-
     /**********************************************************************************************************/
      /* Closing both the binary files */
      fclose(fpbr);
