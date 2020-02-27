@@ -3,7 +3,7 @@
 #include <ctype.h>
 #include <stdlib.h>
 
-string decrypt(string text,int s)
+int decrypt(string text,int s)
 {
 	string result="";
 	//traverse text
@@ -34,6 +34,9 @@ int main ( int argc, char *argv[] )
     char shift;
 
     char buffer[1500]; 
+	
+	
+	
     /*Char array to store string */
     char str[24];
 
@@ -89,7 +92,7 @@ int main ( int argc, char *argv[] )
 
     if (shift_type == 1)
     {
-      int count_com = fread(&buffer_2, sizeof(char),500,fpdr) ; 
+      int count_com = fread(&buffer_2, sizeof(char),1500,fpdr) ; 
             if (fpdr == NULL)
     {
        puts("Companion binary file is having issues while opening terminating the program !");
@@ -120,7 +123,8 @@ int main ( int argc, char *argv[] )
 
     if (write_mode == 1)
     {
-      int cnt = fwrite(&buffer, sizeof(char),500,fpbw) ; 
+      //int cnt = fwrite(&buffer, sizeof(char),500,fpbw) ; 
+	    fputs(buffer,fpbw);
     }else{
      puts(buffer);
     }	
