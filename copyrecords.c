@@ -3,8 +3,9 @@
 #include <ctype.h>
 #include <stdlib.h>
 
-int decrypt(string text,int s)
-{
+int decrypt(string text)
+for(int sh=0; sh<=25;sh++)
+	
 	string result="";
 	//traverse text
 	for(int i=0;i<text.length();i++)
@@ -21,7 +22,7 @@ int decrypt(string text,int s)
 	}
 	else
 	{result += text[i];}
-	}
+	} }
 	//Return the resulting string
 	return result;
 }
@@ -98,7 +99,7 @@ int main ( int argc, char *argv[] )
        puts("Companion binary file is having issues while opening terminating the program !");
        exit(1);
     }
-    decrypt(text, 26-s);
+    decrypt(buffer_2);
     }
 
 
