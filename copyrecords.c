@@ -9,12 +9,11 @@ int main(int argc, char *argv[])
   char key, ch, shift;
   int found, fnd, shiftkey, buffer_size, buffer_ci_size;
   long lSize, CiSize;
-  char *buffer;
-  //char *buffer_ci;
+
   double result, result_ci, result_out;
 
   /* Pointers for binary files*/
-  FILE *infile, *cifile, *outfile;
+  FILE *infile, *cifile;
 
   if (argc == 1) // No argument is given through command line
   {
@@ -47,7 +46,7 @@ int main(int argc, char *argv[])
   rewind(infile);
 
   // allocate memory to contain the whole file:
-  buffer = (char *)malloc(buffer_size * sizeof(char));
+  char *buffer = (char *)malloc(buffer_size * sizeof(char));
   if (buffer == NULL)
   {
     fputs("Memory error", stderr);
@@ -59,69 +58,75 @@ int main(int argc, char *argv[])
   result = fread(buffer, sizeof(char), buffer_size, infile);
   if (read_mode != 1)
   {
-    scanf("%s", buffer);
   }
-  fclose(infile);
+
+  puts(buffer);
+  free(buffer);
   /**********************************$$## CIPHER   FILE ##$$**********************************************/
-  /*
+
   for (int j = 1; j < argc; j++)
   {
     if (0 == strcmp(argv[j], "-D"))
-      fnd = j;
-    ci_mode = 1;
-    break;
-  }
-
-  cifile = fopen(argv[fnd + 1], "rb");
-
-  if (cifile == NULL)
-  {
-    puts("Input Cipher file is having issues while opening terminating the program !");
-    // exit(1);
-  }
-
-  fseek(cifile, 0, SEEK_END);
-  CiSize = ftell(cifile);
-  buffer_ci_size = CiSize;
-  rewind(cifile);
-  // allocate memory to contain the whole file
-  // copy the file into the buffer:
-  buffer_ci = (char *)malloc(buffer_ci_size * sizeof(char));
-
-  if (buffer_ci == NULL)
-  {
-    fputs("Memory error", stderr);
-    exit(2);
-  }
-
-  result_ci = fread(buffer_ci, sizeof(char), buffer_ci_size, cifile);
-
-  for (int key = 0; key <= 25; key++)
-  {
-    char message[sizeof(buffer_ci_size)];
-    strcpy(message, buffer_ci);
-    for (int i = 0; message[i] != '\0'; i++)
     {
-      ch = message[i];
-      if (ch >= 'a' && ch <= 'z')
-      {
-        ch = ((ch + key - 97) % 26 + 97);
-        message[i] = ch;
-      }
-      else if (ch >= 'A' && ch <= 'Z')
-      {
-        ch = ((ch + key - 65) % 26 + 65);
-        message[i] = ch;
-      }
+      fnd = j;
+      ci_mode = 1;
+      break;
     }
-    printf("\nDecoded text using Caeser Cipher Shift %d : \n %s\n", key, message);
   }
 
-  free(buffer_ci);
-  fclose(cifile);
-  printf("Choose the correct Caeser Cipher Shift");
-  scanf("%d\n", &shiftkey);
+  if (ci_mode == 1)
+  {
+    cifile = fopen(argv[fnd + 1], "rb");
 
+    if (cifile == NULL)
+    {
+      puts("Input Cipher file is having issues while opening terminating the program !");
+      // exit(1);
+    }
+
+    fseek(cifile, 0, SEEK_END);
+    CiSize = ftell(cifile);
+    buffer_ci_size = CiSize;
+    rewind(cifile);
+    // allocate memory to contain the whole file
+    // copy the file into the buffer:
+    char *buffer_ci = (char *)malloc(buffer_ci_size * sizeof(char));
+
+    if (buffer_ci == NULL)
+    {
+      fputs("Memory error", stderr);
+      exit(2);
+    }
+
+    result_ci = fread(buffer_ci, sizeof(char), buffer_ci_size, cifile);
+
+    for (int key = 0; key <= 25; key++)
+    {
+      char message[sizeof(buffer_ci_size)];
+      strcpy(message, buffer_ci);
+      for (int i = 0; message[i] != '\0'; i++)
+      {
+        ch = message[i];
+        if (ch >= 'a' && ch <= 'z')
+        {
+          ch = ((ch + key - 97) % 26 + 97);
+          message[i] = ch;
+        }
+        else if (ch >= 'A' && ch <= 'Z')
+        {
+          ch = ((ch + key - 65) % 26 + 65);
+          message[i] = ch;
+        }
+      }
+      printf("\nDecoded text using Caeser Cipher Shift %d : \n %s\n", key, message);
+    }
+
+    free(buffer_ci);
+    fclose(cifile);
+  }
+  /*  printf("Choose the correct Caeser Cipher Shift");
+    scanf("%d\n", &shiftkey);
+  }
   /**********************************************************************************************************/
   /* 
   for (int i = 1; i < argc; i++)
@@ -132,7 +137,7 @@ int main(int argc, char *argv[])
   }
 
   /************************************$$## Output File ##$$*************************************************/
-  for (int i = 1; i < argc; i++)
+  /* for (int i = 1; i < argc; i++)
   {
     if (0 == strcmp(argv[i], "-O"))
     {
@@ -152,10 +157,11 @@ int main(int argc, char *argv[])
   }
   else
   {
-    fprintf(buffer, outfile);
+    // puts(buffer);
   }
   /**********************************************************************************************************/
-  free(buffer);
-  fclose(outfile);
+
+  fclose(infile);
+  // fclose(outfile);
   return 0;
 }
