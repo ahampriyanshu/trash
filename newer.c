@@ -23,13 +23,14 @@ int main(int argc, char *argv[])
     gtk_init(&argc, &argv);
 
     window = gtk_window_new(GTK_WINDOW_TOPLEVEL);
+    gtk_window_set_title(GTK_WINDOW(window), "Hardness Calculator");
 
     g_signal_connect(window, "destroy",
                      G_CALLBACK(destroy), NULL);
     /* Let's set the border width of the window to 20.
     * You may play with the value and see the
     * difference. */
-    gtk_container_set_border_width(GTK_CONTAINER(window), 20);
+    gtk_container_set_border_width(GTK_CONTAINER(window), 150);
 
     button = gtk_button_new_with_label("Click Me!");
 

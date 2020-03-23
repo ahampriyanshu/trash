@@ -1,20 +1,22 @@
+#include <gtk/gtk.h>
+#include <string.h>
+#include <stdlib.h>
 #include <stdio.h>
 
-int main()
+int main(int argc, char **argv)
 {
-    printf("*************************************************************************WELCOME*************************************************************************\n");
+    FILE *fptr;
     int salt_id[13];
     for (int i = 0; i < 13; i++)
     {
-        salt_id[i] = i + 1; //Giving every salt a id
+        salt_id[i] = i + 1;
     }
     char salt_name[13][10] = {
         "Ca(CO)3",
         "Ca(HCO3)2",
         "Ca(SO4)",
         "Ca(Cl)2",
-        "Ca(NO3)2", //Initialising salt name that can be present in given sample of water
-        "Mg(CO3)",
+        "Ca(NO3)2",
         "Mg(HCO3)2",
         "Mg(SO4)",
         "Mg(Cl)2",
@@ -84,7 +86,8 @@ int main()
                 }
                 else
                 {
-                    printf("You already entered for this salt id\n");
+                    printf("You already entered this salt!\nWant to change the amount ?\n");
+
                     i--;
                 }
             }
@@ -102,14 +105,48 @@ int main()
     float total;
     total = tsum + psum;
 
-    printf("Temprory hardness of given sample of water = %f mg/L or %f ppm\n", tsum * 100, tsum * 100); //output
+    GtkWidget *window;
+    GtkWidget *addButton;
+    GtkWidget *subButton;
+    GtkWidget *grid;
+    GtkWidget *sum;
 
-    printf("Permanent hardness of given  sample of water = %f mg/L or %f ppm\n", psum * 100, psum * 100);
+    gtk_init(&argc, &argv);
 
-    printf("Total hardness of given sample of water = %f mg/L or %fppm\n", total * 100, total * 100);
+    //Declarations
+    window = gtk_window_new(GTK_WINDOW_TOPLEVEL);
+    sum = gtk_label_new("Temporary hardness of water is %f\nPermanent hardness of water is %f\nTotal hardness of water is %f ");
+    grid = gtk_grid_new();
+
+    //Set Properties
+    gtk_container_set_border_width(GTK_CONTAINER(window), 40);
+    gtk_widget_set_size_request(GTK_WIDGET(window), 800, 300);
+    gtk_label_set_selectable(GTK_LABEL(sum), FALSE);
+    gtk_grid_set_row_spacing(GTK_GRID(grid), 10);
+    gtk_grid_set_column_spacing(GTK_GRID(grid), 10);
+    gtk_container_add(GTK_CONTAINER(window), grid);
+    gtk_window_set_title(GTK_WINDOW(window), "Hardness Calculator");
+
+    gtk_grid_attach(GTK_GRID(grid), sum, 5, 5, 2, 1);
+
+    gtk_widget_show_all(window);
+
+    g_signal_connect(G_OBJECT(window), "destroy", G_CALLBACK(gtk_main_quit), NULL);
+
+    gtk_main();
+    fptr = fopen("solution.txt", "wb");
+    if (fptr == NULL)
+    {
+        printf("Error while creating the file\n");
+        exit(0);
+    }
+    fprintf(fptr, "Temprory hardness of given sample of water = %f mg/L or %f ppm\n", tsum * 100, tsum * 100);
+    fprintf(fptr, "Permanent hardness of given  sample of water = %f mg/L or %f ppm\n", psum * 100, psum * 100);
+    fprintf(fptr, "Total hardness of given sample of water = %f mg/L or %fppm\n", total * 100, total * 100);
+    printf("The answer has been saved as 'soltion.txt' for future reference\n");
+    fclose(fptr);
 
     return 0;
 }
-
-//Made by Vaibhav Shukla
-//Improvised b Priyanshumay
+// Created By Vaibhav Shukla
+// Improvised by PriyanshuMay
