@@ -1,3 +1,0 @@
-Temprory hardness of given sample of water = 1.000000 mg/L or 1.000000 ppm
-Permanent hardness of given  sample of water = 0.000000 mg/L or 0.000000 ppm
-Total hardness of given sample of water = 1.000000 mg/L or 1.000000ppm

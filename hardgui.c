@@ -5,7 +5,8 @@
 
 int main(int argc, char **argv)
 {
-    FILE *fptr;
+    FILE *filein, *fileout;
+    char ch;
     int salt_id[13];
     for (int i = 0; i < 13; i++)
     {
@@ -126,7 +127,7 @@ int main(int argc, char **argv)
     gtk_grid_set_column_spacing(GTK_GRID(grid), 10);
     gtk_container_add(GTK_CONTAINER(window), grid);
     gtk_window_set_title(GTK_WINDOW(window), "Hardness Calculator");
-
+    gtk_window_set_position(GTK_WINDOW(window), GTK_WIN_POS_CENTER);
     gtk_grid_attach(GTK_GRID(grid), sum, 5, 5, 2, 1);
 
     gtk_widget_show_all(window);
@@ -134,17 +135,28 @@ int main(int argc, char **argv)
     g_signal_connect(G_OBJECT(window), "destroy", G_CALLBACK(gtk_main_quit), NULL);
 
     gtk_main();
-    fptr = fopen("solution.txt", "wb");
-    if (fptr == NULL)
+    fileout = fopen("solution.txt", "wb");
+    filein = fopen("solution.txt", "rb");
+
+    if (filein == NULL)
     {
-        printf("Error while creating the file\n");
-        exit(0);
+        fprintf(fileout, "Temprory hardness of given sample of water = %f mg/L or %f ppm\n", tsum * 100, tsum * 100);
+        fprintf(fileout, "Permanent hardness of given  sample of water = %f mg/L or %f ppm\n", psum * 100, psum * 100);
+        fprintf(fileout, "Total hardness of given sample of water = %f mg/L or %fppm\n", total * 100, total * 100);
+        printf("The answer has been saved as 'soltion.txt' for future reference\n");
     }
-    fprintf(fptr, "Temprory hardness of given sample of water = %f mg/L or %f ppm\n", tsum * 100, tsum * 100);
-    fprintf(fptr, "Permanent hardness of given  sample of water = %f mg/L or %f ppm\n", psum * 100, psum * 100);
-    fprintf(fptr, "Total hardness of given sample of water = %f mg/L or %fppm\n", total * 100, total * 100);
-    printf("The answer has been saved as 'soltion.txt' for future reference\n");
-    fclose(fptr);
+    else
+    {
+        while ((ch = getc(filein)) != EOF)
+        {
+            fprintf(fileout, "Temprory hardness of given sample of water = %f mg/L or %f ppm\n", tsum * 100, tsum * 100);
+            fprintf(fileout, "Permanent hardness of given  sample of water = %f mg/L or %f ppm\n", psum * 100, psum * 100);
+            fprintf(fileout, "Total hardness of given sample of water = %f mg/L or %fppm\n", total * 100, total * 100);
+            printf("The answer has been saved as 'soltion.txt' for future reference\n");
+        }
+    }
+    fclose(fileout);
+    fclose(filein);
 
     return 0;
 }

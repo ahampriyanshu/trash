@@ -6,6 +6,7 @@
         "chrono": "c",
         "algorithm": "c",
         "random": "c",
-        "stdlib.h": "c"
+        "stdlib.h": "c",
+        "valarray": "c"
     }
 }
