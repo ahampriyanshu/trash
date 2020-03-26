@@ -5,8 +5,9 @@
 
 int main(int argc, char **argv)
 {
-    FILE *filein, *fileout;
+    FILE *file, *newfile;
     char ch;
+    /*************************************## Backend ##***************************************/
     int salt_id[13];
     for (int i = 0; i < 13; i++)
     {
@@ -44,10 +45,16 @@ int main(int argc, char **argv)
     {
         printf("%d	    %s\n", salt_id[i], salt_name[i]); //Printing the table of content
     }
-    int sp;
+    int sp, ip = 0;
     float tsum = 0, psum = 0;
-    printf("\nEnter the number of salts present in the given sample of water from above table\n"); //Counting how many salts are present in the sample
-    scanf("%d", &sp);
+
+    //Counting how many salts are present in the sample
+    while (ip == 0)
+    {
+        printf("\nEnter the number of salts present in the given sample of water from above table\n");
+        ip = scanf("%d", &sp);
+    }
+
     if (sp > 0 && sp < 14)
     {
         printf("\nEnter the Salt_Id of salts which are present in the given water sample and their amount\n");
@@ -55,9 +62,16 @@ int main(int argc, char **argv)
         float salt_amt[sp];
         for (int i = 0; i < sp; i++)
         {
-            int k;
-            printf("\nEnter the salt_id %d: ", i + 1);
-            scanf("%d", &salt_present[i]); //storing salt id
+            int k, l = 0;
+
+            while (l == 0)
+            { //Checking l
+
+                printf("\nEnter the salt_id %d: ", i + 1);
+                l = scanf("%d", &salt_present[i]);
+            }
+
+            //storing salt id
             k = salt_present[i];
             if (k > 0 && k < 14) //From here id validation process begins
             {
@@ -106,6 +120,8 @@ int main(int argc, char **argv)
     float total;
     total = tsum + psum;
 
+    /*************************************## Frontend ##***************************************/
+
     GtkWidget *window;
     GtkWidget *addButton;
     GtkWidget *subButton;
@@ -135,28 +151,31 @@ int main(int argc, char **argv)
     g_signal_connect(G_OBJECT(window), "destroy", G_CALLBACK(gtk_main_quit), NULL);
 
     gtk_main();
-    fileout = fopen("solution.txt", "wb");
-    filein = fopen("solution.txt", "rb");
 
-    if (filein == NULL)
+    /*************************************## File Handling ##***************************************/
+
+    file = fopen("solution.txt", "r+");
+
+    if (file == NULL)
     {
-        fprintf(fileout, "Temprory hardness of given sample of water = %f mg/L or %f ppm\n", tsum * 100, tsum * 100);
-        fprintf(fileout, "Permanent hardness of given  sample of water = %f mg/L or %f ppm\n", psum * 100, psum * 100);
-        fprintf(fileout, "Total hardness of given sample of water = %f mg/L or %fppm\n", total * 100, total * 100);
-        printf("The answer has been saved as 'soltion.txt' for future reference\n");
+        newfile = fopen("solution.txt", "wb");
+        fprintf(newfile, "Temprory hardness of given sample of water = %f mg/L or %f ppm\n", tsum * 100, tsum * 100);
+        fprintf(newfile, "Permanent hardness of given  sample of water = %f mg/L or %f ppm\n", psum * 100, psum * 100);
+        fprintf(newfile, "Total hardness of given sample of water = %f mg/L or %fppm\n", total * 100, total * 100);
+        printf("The answer has been saved as in a new file 'soltion.txt' for future reference\n");
+        fclose(newfile);
     }
     else
     {
-        while ((ch = getc(filein)) != EOF)
-        {
-            fprintf(fileout, "Temprory hardness of given sample of water = %f mg/L or %f ppm\n", tsum * 100, tsum * 100);
-            fprintf(fileout, "Permanent hardness of given  sample of water = %f mg/L or %f ppm\n", psum * 100, psum * 100);
-            fprintf(fileout, "Total hardness of given sample of water = %f mg/L or %fppm\n", total * 100, total * 100);
-            printf("The answer has been saved as 'soltion.txt' for future reference\n");
-        }
+        fseek(file, 0, SEEK_END);
+        fputs("\n\t\t\t\t******************************************************************\n", file);
+        fprintf(file, "Temprory hardness of given sample of water = %f mg/L or %f ppm\n", tsum * 100, tsum * 100);
+        fprintf(file, "Permanent hardness of given  sample of water = %f mg/L or %f ppm\n", psum * 100, psum * 100);
+        fprintf(file, "Total hardness of given sample of water = %f mg/L or %fppm\n", total * 100, total * 100);
+        printf("The answer has been appended to the 'soltion.txt' for future reference\n");
     }
-    fclose(fileout);
-    fclose(filein);
+
+    fclose(file);
 
     return 0;
 }

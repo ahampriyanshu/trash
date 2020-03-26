@@ -1,0 +1,51 @@
+Temprory hardness of given sample of water = 1.000000 mg/L or 1.000000 ppm
+Permanent hardness of given  sample of water = 0.000000 mg/L or 0.000000 ppm
+Total hardness of given sample of water = 1.000000 mg/L or 1.000000ppm
+Temprory hardness of given sample of water = 1.000000 mg/L or 1.000000 ppm
+Permanent hardness of given  sample of water = 0.000000 mg/L or 0.000000 ppm
+Total hardness of given sample of water = 1.000000 mg/L or 1.000000ppm
+
+*****************************
+Temprory hardness of given sample of water = 0.000000 mg/L or 0.000000 ppm
+Permanent hardness of given  sample of water = 0.000000 mg/L or 0.000000 ppm
+Total hardness of given sample of water = 0.000000 mg/L or 0.000000ppm
+
+*****************************
+Temprory hardness of given sample of water = 8.333334 mg/L or 8.333334 ppm
+Permanent hardness of given  sample of water = 12.004505 mg/L or 12.004505 ppm
+Total hardness of given sample of water = 20.337837 mg/L or 20.337837ppm
+
+*****************************
+Temprory hardness of given sample of water = 0.000000 mg/L or 0.000000 ppm
+Permanent hardness of given  sample of water = 6.599713 mg/L or 6.599713 ppm
+Total hardness of given sample of water = 6.599713 mg/L or 6.599713ppm
+
+              ******************************************************************
+Temprory hardness of given sample of water = 0.000000 mg/L or 0.000000 ppm
+Permanent hardness of given  sample of water = 0.000000 mg/L or 0.000000 ppm
+Total hardness of given sample of water = 0.000000 mg/L or 0.000000ppm
+
+				******************************************************************
+Temprory hardness of given sample of water = 69.197533 mg/L or 69.197533 ppm
+Permanent hardness of given  sample of water = 0.000000 mg/L or 0.000000 ppm
+Total hardness of given sample of water = 69.197533 mg/L or 69.197533ppm
+
+				******************************************************************
+Temprory hardness of given sample of water = 0.000000 mg/L or 0.000000 ppm
+Permanent hardness of given  sample of water = 0.000000 mg/L or 0.000000 ppm
+Total hardness of given sample of water = 0.000000 mg/L or 0.000000ppm
+
+				******************************************************************
+Temprory hardness of given sample of water = 0.000000 mg/L or 0.000000 ppm
+Permanent hardness of given  sample of water = 0.000000 mg/L or 0.000000 ppm
+Total hardness of given sample of water = 0.000000 mg/L or 0.000000ppm
+
+				******************************************************************
+Temprory hardness of given sample of water = 0.000000 mg/L or 0.000000 ppm
+Permanent hardness of given  sample of water = 0.000000 mg/L or 0.000000 ppm
+Total hardness of given sample of water = 0.000000 mg/L or 0.000000ppm
+
+				******************************************************************
+Temprory hardness of given sample of water = 67394.289062 mg/L or 67394.289062 ppm
+Permanent hardness of given  sample of water = 0.000000 mg/L or 0.000000 ppm
+Total hardness of given sample of water = 67394.289062 mg/L or 67394.289062ppm
