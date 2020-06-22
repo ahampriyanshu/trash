@@ -25,7 +25,10 @@ SECRET_KEY = '*sefek_(^*z(8pk7l$6#^g@$9(hn-n6mp#&u_(pq^&&grr_m%0'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'afternoon-beach-16819.herokuapp.com',
+    '127.0.0.1',
+    ]
 
 
 # Application definition
