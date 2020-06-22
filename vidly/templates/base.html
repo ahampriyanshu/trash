@@ -5,25 +5,66 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 
 
-<!-- As a heading -->
-<nav class="navbar navbar-light bg-light">
-  <span class="navbar-brand mb-0 h1">Vidly</span>
-</nav>
+<style>
+  body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+  }
+
+  main {
+    flex: 1 0 auto;
+  }
+</style>
 
   </head>
   <body>
+ <nav>
+    <div class="nav-wrapper">
+      <a href="#!" class="brand-logo"><i class="material-icons">&emsp;&emsp;movie</i> Vidly </a>
+    </div>
+  </nav>
     <main class="container">
     {% block content %}
     {% endblock  %}
     </main>
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+      <!---    Footer   ---->
+    <footer class="page-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col l6 s12">
+                    <h5 class="white-text">Built By Priyanshu</h5>
+                    <p class="grey-text text-lighten-4">This is my first Django Site<br>
+                        Uses Materialize CSS <br> Tastypie API framework <br> Sqlite3 database <br> Hosted on Heroku </p>
+                </div>
+                <div class="col l4 offset-l2 s12">
+                    <h5 class="white-text">Project you may like</h5>
+                    <ul>
+                        <li><a class="grey-text text-lighten-3" href="#!">PyDown</a></li>
+                        <li><a class="grey-text text-lighten-3" href="#!">torrent.it</a></li>
+                        <li><a class="grey-text text-lighten-3" href="#!">Flowchart to code Converter</a></li>
+                        <li><a class="grey-text text-lighten-3" href="#!">Stack Overflow Clone</a></li>
+                        <li><a class="grey-text text-lighten-3" href="#!">Some Games</a></li>
+                        <li><a class="grey-text text-lighten-3" href="#!">Janshakti</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footer-copyright">
+            <div class="container">
+                Open Sourced on Github
+                <a class="grey-text text-lighten-4 right" href="#!">LinkedIn</a>
+            </div>
+        </div>
+    </footer>
+
   </body>
 </html>
