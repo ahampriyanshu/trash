@@ -1,3 +1,22 @@
+### Data types in Scala
+
+Index |  Data Type | Description
+| -- | -- | --
+1 | Any | Super type
+2 | AnyVal | Represent value type
+3 | AnyRef | Subtype of reference type
+4 | Double | 64 bit float
+5 | Float  | 32 bit float
+6 | Long | 64 bit signed value
+7 | Int | 32 bit signed value
+8 | Short | 16 bit signed value
+9 | Byte | 8 bit signed value
+10 | Unit | Void
+11 | Boolean | True/False
+12 | Char | 16 bit unsigned unicode
+13 | Null | Null
+14 | Nothing | Subtype of everytype
+
 ### Assigning Block Expression
 
 * Using ``;`` as delimeter
