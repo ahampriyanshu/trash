@@ -8,8 +8,9 @@ func main(){
 
 	shortname, height :="Burr", 5.10
 	// short hand method
-	// pay attention while printing out `height` 
+	// pay attention while printing out `height`
 	var age = 53
+
 	var isCool = true
 	// var is mutable 
 	const isNotCool = false
