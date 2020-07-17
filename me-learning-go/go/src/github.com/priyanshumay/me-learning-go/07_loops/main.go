@@ -20,7 +20,10 @@ func main(){
 	// fizzbuzz
 	for i := 1; i <= 100; i++{
 		if i % 15 == 0 {
-			fmt.Println("FizzBuzz")
+			fmt.Print	}
+		}
+		}
+			ln("FizzBuzz")
 		} else if i % 3 == 0 {
 			fmt.Println("Fizz")
 		} else if i % 5 == 0 {
