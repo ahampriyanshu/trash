@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+  <title>Testing Dform for Scie</title>
+  <body>
+    <!-- Including jQuery -->
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+
+    <script type="text/javascript" src="./js/index.js"></script>
+
+    <script>
+      $(document).ready(function () {
+        // Defining  myFunction1
+        $.fn.myFunction1 = function () {
+          $("#myform").dform({
+            html: [
+              {
+                // Other attributes
+                name: "text",
+                id: "txt-text",
+                caption: "text",
+
+                // Type Classifier
+                type: "text",
+                placeholder: "text",
+              },
+              { type: "br" },
+            ],
+          });
+        };
+        $(".call-btn-text").click(function () {
+          // Calling myFunction1 on click
+          $.fn.myFunction1();
+        });
+
+        $.fn.myFunction2 = function () {
+          $("#myform").dform({
+            html: [
+              {
+                // Other attributes
+                name: "Password",
+                id: "num_phone",
+                caption: "Password",
+
+                // Type Classifier
+                type: "password",
+                placeholder: "Password",
+              },
+              { type: "br" },
+            ],
+          });
+        };
+        $(".call-btn-password").click(function () {
+          // Calling myFunction2 on click
+          $.fn.myFunction2();
+        });
+
+        $.fn.myFunction3 = function () {
+          $("#myform").dform({
+            html: [
+              {
+                // Other attributes
+                name: "Radio",
+                id: "num_phone",
+                caption: "Radio",
+
+                // Type Classifier
+                type: "radio",
+                placeholder: "secrete key",
+              },
+              { type: "br" },
+            ],
+          });
+        };
+        $(".call-btn-radio").click(function () {
+          // Calling myFunction3 on click
+          $.fn.myFunction3();
+        });
+
+        $.fn.myFunction4 = function () {
+          $("#myform").dform({
+            html: [
+              {
+                // Other attributes
+                name: "checkbox",
+                id: "num_phone",
+                caption: "checkbox",
+
+                // Type Classifier
+                type: "checkbox",
+                placeholder: "E.g. 0123456789",
+              },
+              { type: "br" },
+            ],
+          });
+        };
+        $(".call-btn-checkbox").click(function () {
+          // Calling myFunction4 on click
+          $.fn.myFunction4();
+        });
+
+        $.fn.myFunction5 = function () {
+          $("#myform").dform({
+            html: [
+              {
+                // Other attributes
+                name: "file",
+                id: "num_phone",
+                caption: "file",
+
+                // Type Classifier
+                type: "file",
+                placeholder: "E.g. 0123456789",
+              },
+              { type: "br" },
+            ],
+          });
+        };
+        $(".call-btn-file").click(function () {
+          // Calling myFunction5 on click
+          $.fn.myFunction5();
+        });
+
+        $.fn.myFunction6 = function () {
+          $("#myform").dform({
+            html: [
+              {
+                // Other attributes
+                name: "email",
+                id: "num_phone",
+                caption: "email",
+
+                // Type Classifier
+                type: "email",
+                placeholder: "email@g.com",
+              },
+              { type: "br" },
+            ],
+          });
+        };
+        $(".call-btn-email").click(function () {
+          // Calling myFunction6 on click
+          $.fn.myFunction6();
+        });
+      });
+    </script>
+    <form>
+      <input type="button" class="call-btn-text" value="Add new input text" />
+
+      <input
+        type="button"
+        value="Add new input password"
+        class="call-btn-password"
+      />
+
+      <input
+        type="button"
+        value="Add new input checkbox"
+        class="call-btn-checkbox"
+      />
+
+      <input type="button" value="Add new input file" class="call-btn-file" />
+
+      <input type="button" value="Add new input radio" class="call-btn-radio" />
+
+      <input type="button" value="Add new input email" class="call-btn-email" />
+    </form>
+    <form id="myform"></form>
+  </body>
+</html>
